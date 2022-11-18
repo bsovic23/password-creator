@@ -41,8 +41,17 @@ var promptOne = function() {
 
 // PROMPT 2: Uppercase, Lowercase, or Both
 var promptTwo = function() {
-    console.log("function two works");
-    promptThree();
+
+    var promptTwoAnswer = window.prompt("Would you like your password to be all uppercase, all lowercase, or both? Please responsd with 'uppercase' 'lowercase' or 'both'");
+
+    if (promptTwoAnswer == 'uppercase' || promptTwoAnswer == 'lowercase' || promptTwoAnswer == 'both') {
+        passwordPromptAnswers.promptTwo = promptTwoAnswer;
+        promptThree();
+    } else {
+        window.alert("Please type uppercase, lowercase, or both");
+        promptTwo();
+    };
+
 };
 
 
@@ -68,7 +77,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
 
-  var password = generatePassword();
+  // Need to include the last function output to here
 
   var passwordText = document.querySelector("#password");
 
@@ -76,8 +85,9 @@ function writePassword() {
 };
 
 // ===============================================================================================================================
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Starts the password generating
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
