@@ -57,27 +57,49 @@ var promptTwo = function() {
 
 // Prompt 3: Do you want to include numbers
 var promptThree = function() {
-    console.log("function three works")
-    promptFour();
+    
+    var promptThreeAnswer = window.prompt("Do you want you password to include numbers? Please type 'yes' or 'no' in the response below: ");
+
+    if (promptThreeAnswer == "yes" || promptThreeAnswer == "no") {
+        passwordPromptAnswers.promptThree = promptThreeAnswer;
+        promptFour();
+    } else {
+        window.alert("Please answer the question 'yes' or 'no' ");
+        promptThree();
+    }
 };
 
 // Prompt 4: Do you want to include speical characters
 var promptFour = function() {
-    console.log("Prompt Four works!");
+    
+    var promptFourAnswer = window.prompt("Do you want to include special characters? Please type 'yes' or 'no' in the response below: ");
+
+    if (promptFourAnswer == 'yes' || promptFourAnswer == 'no') {
+        passwordPromptAnswers.promptFour = promptFourAnswer;
+        criteriaChoices(passwordPromptAnswers);
+    } else {
+        window.alert("Please answer the question 'yes' or 'no' ");
+        promptFour();
+    };
 };
-
-
 
 // ===============================================================================================================================
 // Password generated at this point and below is used to display 
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+// Runs through criteria choices to create the password
+var criteriaChoices = function(passwordPromptAnswers) {
 
-// Write password to the #password input
-function writePassword() {
+    console.log(passwordPromptAnswers);
 
-  // Need to include the last function output to here
+    console.log('criteria function works!');
+
+    var password = "britsovic";
+
+    writePassword(password);
+};
+
+// takes password created in function above and writes it to the pag
+function writePassword(password) {
 
   var passwordText = document.querySelector("#password");
 
