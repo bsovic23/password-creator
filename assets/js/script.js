@@ -2,9 +2,15 @@
 specialCharacters = ["!", "#", "$", "*", "&"];
 alphabetLetters = "abcdefghijklmnopqrstuvwxyz";
 
+// Password Prompt Array
+passwordPromptAnswers = {
+    "promptOne": "",
+    "promptTwo": "",
+    "promptThree": ""
+};
 
 // ===============================================================================================================================
-// Password function
+// Password begin function
 
 function generatePassword() {
     // First Password Alert
@@ -13,22 +19,43 @@ function generatePassword() {
     createpass = window.confirm("Do you want to create a new password");
 
     if (createpass) {
-        console.log("moving on to next question")
-        //function // FIRST FUNCTION;
+        promptOne();
     } else {
         window.alert("Have a good day!");
     }
 };
 
 // PROMPT 1: Length Of Password: must be between 8 and 128 characters
+var promptOne = function() {
+
+    var promptOneAnswer = window.prompt("How long do you want your password to be? Please enter a number no smaller than 8 and no larger than 128");
+
+    if (promptOneAnswer > 7 && promptOneAnswer < 129) {
+        passwordPromptAnswers.promptOne = promptOneAnswer;
+        promptTwo();
+    } else {
+        window.alert("That is not an acceptable password length");
+        promptOne();
+    };
+};
 
 // PROMPT 2: Uppercase, Lowercase, or Both
+var promptTwo = function() {
+    console.log("function two works");
+    promptThree();
+};
+
 
 // Prompt 3: Do you want to include numbers
+var promptThree = function() {
+    console.log("function three works")
+    promptFour();
+};
 
 // Prompt 4: Do you want to include speical characters
-
-
+var promptFour = function() {
+    console.log("Prompt Four works!");
+};
 
 
 
@@ -40,7 +67,9 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+
   var password = generatePassword();
+
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
