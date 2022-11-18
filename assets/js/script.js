@@ -54,7 +54,6 @@ var promptTwo = function() {
 
 };
 
-
 // Prompt 3: Do you want to include numbers
 var promptThree = function() {
     
