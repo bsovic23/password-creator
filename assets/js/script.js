@@ -6,7 +6,8 @@ alphabetLetters = "abcdefghijklmnopqrstuvwxyz";
 passwordPromptAnswers = {
     "promptOne": "",
     "promptTwo": "",
-    "promptThree": ""
+    "promptThree": "",
+    "promptFour": ""
 };
 
 // ===============================================================================================================================
@@ -88,12 +89,50 @@ var promptFour = function() {
 // Runs through criteria choices to create the password
 var criteriaChoices = function(passwordPromptAnswers) {
 
+    // answers to criteria
     console.log(passwordPromptAnswers);
 
-    console.log('criteria function works!');
+    // Starting with blank password
+    password = "";
 
-    var password = "britsovic";
+    // Creating length of password
+    criteriaLengthInt = parseInt(passwordPromptAnswers.promptOne);
 
+    for ( i = 0; i < criteriaLengthInt; i++) {
+    password += alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)]
+    };
+
+    // Uppercase, Lowercase, Both
+    if (passwordPromptAnswers.promptTwo == "uppercase") {
+        password = password.toUpperCase();
+     } else if (passwordPromptAnswers.promptTwo == "both") {
+       // password changes certain characters to uppercase
+       password = password.split("");
+     } else password = password;
+    
+    // Integers
+    if (passwordPromptAnswers.promptThree == "yes") {
+        
+        for (i = 0; i < password.length; i++) {
+            console.log(password[i]);
+
+            if ((i % 2) == 0) {
+                password[i] = "a";
+            } else {
+                password[i] = password[i];
+            }
+            };
+    
+        } else password = password;
+
+    // Special Characters
+    /*
+    if (passwordPromptAnswers.promptFour == "yes") {
+
+    } else password = password;
+    */
+
+    // below function sends the final password from var above to the page
     writePassword(password);
 };
 
