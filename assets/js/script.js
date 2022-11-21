@@ -1,5 +1,6 @@
 // Assignment code here
-specialCharacters = ["!", "#", "$", "*", "&"];
+specialCharacters = ["!", "#", "$", "*", "&", "@", "^"];
+numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 alphabetLetters = "abcdefghijklmnopqrstuvwxyz";
 
 // Password Prompt Array
@@ -108,29 +109,51 @@ var criteriaChoices = function(passwordPromptAnswers) {
      } else if (passwordPromptAnswers.promptTwo == "both") {
        // password changes certain characters to uppercase
        password = password.split("");
+                    
+       for (i=0; i < password.length; i++) {
+         if (i % 3 == 0) {
+           password[i] = password[i].toUpperCase();
+         } else password[i] = password[i];
+       }
+
+       password = password.join("");
+
      } else password = password;
     
     // Integers
     if (passwordPromptAnswers.promptThree == "yes") {
+
+        password = password.split("");
         
         for (i = 0; i < password.length; i++) {
-            console.log(password[i]);
-
-            if ((i % 2) == 0) {
-                password[i] = "a";
+            if (i % 6 == 0) {
+              password[i] = numbers[Math.floor(Math.random() * numbers.length)]
             } else {
-                password[i] = password[i];
+              password[i] = password[i];
             }
-            };
+          };         
+                  
+        password = password.join("");
     
-        } else password = password;
+    } else password = password;
 
     // Special Characters
-    /*
+
     if (passwordPromptAnswers.promptFour == "yes") {
 
+        password = password.split("");
+
+        for (i = 0; i < password.length; i++) {
+            if (i % 15 == 0) {
+              password[i] = specialCharacters[Math.floor(Math.random() * specialCharacters.length)]// INSERT TURNS CHARACTER TO RANDOM SPECIAL CHARACTER
+            } else {
+              password[i] = password[i];
+            }
+          };         
+                  
+        password = password.join("");
+
     } else password = password;
-    */
 
     // below function sends the final password from var above to the page
     writePassword(password);
